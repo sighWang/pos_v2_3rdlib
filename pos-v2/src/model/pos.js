@@ -29,7 +29,7 @@ Pos.prototype.getFreeList = function (customItemList){
         var item = customItem.getItem();
         var promotion = customItem.getPromotion();
         if(promotion.type === 'BUY_TWO_GET_ONE_FREE'){
-           freeList += '名称：' + item.name + '，数量：' + promotion.num + item.unit + '\n';
+           freeList += '名称：' + item.name + '，数量：' + promotion.number + item.unit + '\n';
          }
     })
 
@@ -49,8 +49,8 @@ Pos.prototype.getSubtotalAndSave = function (customItemList){
       var item = customItem.getItem();
       var promotion = customItem.getPromotion();
 
-      subtotal += item.price * (customItem.num - promotion.num);
-      saveUp += item.price * promotion.num;
+      subtotal += item.price * (customItem.number - promotion.number);
+      saveUp += item.price * promotion.number;
     })
 
     return '----------------------\n' +
@@ -60,15 +60,15 @@ Pos.prototype.getSubtotalAndSave = function (customItemList){
 }
 
 Pos.prototype.getCustomList = function (customItemList){
-  
+
      var customList = '----------------------\n';
 
      _.each(customItemList, function(customItem) {
      var item = customItem.getItem();
      var promotion = customItem.getPromotion();
-     var total = item.price * (customItem.num - promotion.num);
-     customList += '名称：' + item.name + '，数量：' + customItem.num + item.unit +
-     '，单价：' + (item.price).toFixed(2) + '(元)，小计：' + total + '(元)\n';
+     var total = item.price * (customItem.number - promotion.number);
+     customList += '名称：' + item.name + '，数量：' + customItem.number + item.unit +
+     '，单价：' + (item.price).toFixed(2) + '(元)，小计：' + total.toFixed(2) + '(元)\n';
      })
 
      return customList + '----------------------\n';
