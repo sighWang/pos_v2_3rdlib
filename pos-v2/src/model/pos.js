@@ -68,7 +68,7 @@ Pos.prototype.getCustomList = function (customItemList){
      var promotion = customItem.getPromotion();
      var total = item.price * (customItem.number - promotion.number);
      customList += '名称：' + item.name + '，数量：' + customItem.number + item.unit +
-     '，单价：' + (item.price).toFixed(2) + '(元)，小计：' + total.toFixed(2) + '(元)\n';
+     '，单价：' + Utils.formatter.formatPrice(item.price) + '(元)，小计：' + Utils.formatter.formatPrice(total) + '(元)\n';
      })
 
      return customList + '----------------------\n';
